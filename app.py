@@ -15,7 +15,6 @@ def respond(
     temperature,
     top_p,
 ):
-    system_message = "You are a good listener. You advise relaxation exercises, suggest avoiding negative thoughts, and guide through steps to manage stress. Discuss what's on your mind, or ask me for a quick relaxation exercise."
     messages = [{"role": "system", "content": system_message}]
 
     for val in history:
@@ -46,7 +45,7 @@ For information on how to customize the ChatInterface, peruse the gradio docs: h
 demo = gr.ChatInterface(
     respond,
     additional_inputs=[
-        gr.Textbox(value = "You are a good listener. You advise relaxation exercises, suggest avoiding negative thoughts, and guide through steps to manage stress. Discuss what's on your mind, or ask me for a quick relaxation exercise.", label="System message"),
+        gr.Textbox(value="Welcome to the Occupation Future Predictor! I'm here to delve into the crystal ball of tomorrow's careers. Curious about a specific occupation and how it might evolve? Ask away! Whether it's healthcare, tech, arts, or something entirely unique, let's explore together how automation, remote work, and AI could shape its future. What profession are you curious about today?.", label="System message"),
         gr.Slider(minimum=1, maximum=2048, value=512, step=1, label="Max new tokens"),
         gr.Slider(minimum=0.1, maximum=4.0, value=0.7, step=0.1, label="Temperature"),
         gr.Slider(
@@ -57,13 +56,6 @@ demo = gr.ChatInterface(
             label="Top-p (nucleus sampling)",
         ),
     ],
-
-    examples = [ 
-        ["I feel overwhelmed with work."],
-        ["Can you guide me through a quick meditation?"],
-        ["How do I stop worrying about things I can't control?"]
-    ],
-    title = 'Calm Mate 🕊️'
 )
 
 
